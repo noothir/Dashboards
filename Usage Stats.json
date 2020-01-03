@@ -114,13 +114,16 @@
       "tableColumn": "",
       "targets": [
         {
+          "expr": "",
+          "format": "time_series",
+          "intervalFactor": 1,
           "refId": "A",
           "ts": {
-            "query": "A=fetch('apptuit_datapoints_in').series_sum()",
             "errors": [],
+            "genMap": [],
             "id": "A",
             "output": true,
-            "genMap": []
+            "query": "A=fetch('apptuit_datapoints_in').series_sum()"
           },
           "type": "Query"
         }
@@ -202,13 +205,16 @@
       "tableColumn": "",
       "targets": [
         {
+          "expr": "",
+          "format": "time_series",
+          "intervalFactor": 1,
           "refId": "A",
           "ts": {
-            "query": "A=fetch('apptuit_datapoints_in').series_sum()",
             "errors": [],
+            "genMap": [],
             "id": "A",
             "output": true,
-            "genMap": []
+            "query": "A=fetch('apptuit_datapoints_in').series_sum()"
           },
           "type": "Query"
         }
@@ -290,13 +296,16 @@
       "tableColumn": "",
       "targets": [
         {
+          "expr": "",
+          "format": "time_series",
+          "intervalFactor": 1,
           "refId": "A",
           "ts": {
-            "query": "A=fetch('apptuit_datapoints_in').series_sum()",
             "errors": [],
+            "genMap": [],
             "id": "A",
             "output": true,
-            "genMap": []
+            "query": "A=fetch('apptuit_datapoints_in').series_sum()"
           },
           "type": "Query"
         }
@@ -377,13 +386,16 @@
       "tableColumn": "",
       "targets": [
         {
+          "expr": "",
+          "format": "time_series",
+          "intervalFactor": 1,
           "refId": "A",
           "ts": {
-            "query": "A=fetch('apptuit_datapoints_in').series_sum().div(24);",
             "errors": [],
+            "genMap": [],
             "id": "A",
             "output": true,
-            "genMap": []
+            "query": "A=fetch('apptuit_datapoints_in').series_sum().div(24);"
           },
           "type": "Query"
         }
@@ -464,13 +476,16 @@
       "tableColumn": "",
       "targets": [
         {
+          "expr": "",
+          "format": "time_series",
+          "intervalFactor": 1,
           "refId": "A",
           "ts": {
-            "query": "A=fetch('apptuit_timeseries_in').downsample('1h', 'sum').div(24);",
             "errors": [],
+            "genMap": [],
             "id": "A",
             "output": true,
-            "genMap": []
+            "query": "A=fetch('apptuit_timeseries_in').downsample('1h', 'sum').div(24);"
           },
           "type": "Query"
         }
@@ -551,13 +566,16 @@
       "tableColumn": "",
       "targets": [
         {
+          "expr": "",
+          "format": "time_series",
+          "intervalFactor": 1,
           "refId": "A",
           "ts": {
-            "query": "A=fetch('apptuit_monitored_timeseries').downsample('1h','avg')",
             "errors": [],
+            "genMap": [],
             "id": "A",
             "output": true,
-            "genMap": []
+            "query": "A=fetch('apptuit_monitored_timeseries').downsample('1h','avg')"
           },
           "type": "Query"
         }
@@ -862,7 +880,7 @@
     "list": []
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-3d",
     "to": "now"
   },
   "timepicker": {
