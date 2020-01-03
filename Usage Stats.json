@@ -114,17 +114,13 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum_over_time(apptuit_datapoints_in[30d])",
-          "format": "time_series",
-          "interval": "1h",
-          "intervalFactor": 1,
           "refId": "A",
           "ts": {
+            "query": "A=fetch('apptuit_datapoints_in').series_sum()",
             "errors": [],
-            "genMap": [],
             "id": "A",
             "output": true,
-            "query": "A=fetch('apptuit_datapoints_in').series_sum()"
+            "genMap": []
           },
           "type": "Query"
         }
@@ -206,17 +202,13 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum_over_time(apptuit_datapoints_in[30d])",
-          "format": "time_series",
-          "interval": "1h",
-          "intervalFactor": 1,
           "refId": "A",
           "ts": {
+            "query": "A=fetch('apptuit_datapoints_in').series_sum()",
             "errors": [],
-            "genMap": [],
             "id": "A",
             "output": true,
-            "query": "A=fetch('apptuit_datapoints_in').series_sum()"
+            "genMap": []
           },
           "type": "Query"
         }
@@ -298,17 +290,13 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum_over_time(apptuit_datapoints_in[30d])",
-          "format": "time_series",
-          "interval": "1h",
-          "intervalFactor": 1,
           "refId": "A",
           "ts": {
+            "query": "A=fetch('apptuit_datapoints_in').series_sum()",
             "errors": [],
-            "genMap": [],
             "id": "A",
             "output": true,
-            "query": "A=fetch('apptuit_datapoints_in').series_sum()"
+            "genMap": []
           },
           "type": "Query"
         }
@@ -389,23 +377,19 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum_over_time(apptuit_datapoints_in[24h]) / 24",
-          "format": "time_series",
-          "interval": "1h",
-          "intervalFactor": 1,
           "refId": "A",
           "ts": {
+            "query": "A=fetch('apptuit_datapoints_in').series_sum().div(24);",
             "errors": [],
-            "genMap": [],
             "id": "A",
             "output": true,
-            "query": "A=fetch('apptuit_datapoints_in').downsample('1h','sum');"
+            "genMap": []
           },
           "type": "Query"
         }
       ],
       "thresholds": "",
-      "timeFrom": null,
+      "timeFrom": "24h",
       "timeShift": null,
       "title": "Data Points Ingestion Rate [points/hr]",
       "type": "singlestat",
@@ -480,23 +464,20 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum_over_time(apptuit_timeseries_in[1h])",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
           "refId": "A",
           "ts": {
+            "query": "A=fetch('apptuit_timeseries_in').downsample('1h', 'sum').div(24);",
             "errors": [],
-            "genMap": [],
             "id": "A",
             "output": true,
-            "query": "A=fetch('apptuit_timeseries_in').downsample('1h','sum').sum()"
+            "genMap": []
           },
           "type": "Query"
         }
       ],
       "thresholds": "",
+      "timeFrom": "24h",
+      "timeShift": null,
       "title": "Timeseries In [series/hr]",
       "type": "singlestat",
       "valueFontSize": "100%",
@@ -570,17 +551,13 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "apptuit_monitored_timeseries",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "",
           "refId": "A",
           "ts": {
+            "query": "A=fetch('apptuit_monitored_timeseries').downsample('1h','avg')",
             "errors": [],
-            "genMap": [],
             "id": "A",
             "output": true,
-            "query": "A=fetch('apptuit_monitored_timeseries').downsample('1h','avg')"
+            "genMap": []
           },
           "type": "Query"
         }
@@ -637,26 +614,14 @@
         {
           "expr": "",
           "format": "time_series",
-          "hide": true,
           "intervalFactor": 1,
-          "refId": "A",
-          "ts": {
-            "errors": [],
-            "genMap": [],
-            "id": "A",
-            "output": true,
-            "query": "fetch('apptuit_datapoints_in').downsample('$__interval', 'sum').div($__interval_ms).mult(1000);"
-          },
-          "type": "Query"
-        },
-        {
           "refId": "B",
           "ts": {
             "errors": [],
             "genMap": [],
             "id": "B",
             "output": true,
-            "query": "fetch('apptuit_datapoints_in').downsample('1h','sum').downsample('[[__interval]]', 'avg');"
+            "query": "A=fetch('apptuit_datapoints_in').downsample('1h','sum').downsample('[[__interval]]', 'avg');"
           },
           "type": "Query"
         }
@@ -748,7 +713,7 @@
             "genMap": [],
             "id": "A",
             "output": true,
-            "query": "fetch('apptuit_timeseries_in').downsample('1h','sum').downsample('[[__interval]]', 'avg');"
+            "query": "A=fetch('apptuit_timeseries_in').downsample('1h','sum').downsample('[[__interval]]', 'avg');"
           },
           "type": "Query"
         }
@@ -840,7 +805,7 @@
             "genMap": [],
             "id": "A",
             "output": true,
-            "query": "fetch('apptuit_monitored_timeseries').downsample('1h', 'avg').downsample('[[__interval]]', 'avg');"
+            "query": "A=fetch('apptuit_monitored_timeseries').downsample('1h', 'avg').downsample('[[__interval]]', 'avg');"
           },
           "type": "Query"
         }
@@ -897,7 +862,7 @@
     "list": []
   },
   "time": {
-    "from": "now-3d",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
