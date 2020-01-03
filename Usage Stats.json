@@ -6,7 +6,8 @@
       "description": "",
       "type": "datasource",
       "pluginId": "apptuit",
-      "pluginName": "Apptuit"
+      "pluginName": "Apptuit",
+      "value": "Apptuit"
     }
   ],
   "__requires": [
